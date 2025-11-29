@@ -7,10 +7,10 @@ export function Dataset() {
   const [activeTab, setActiveTab] = useState("all");
 
   const datasetFeatures = [
-    { icon: Users, label: "Sample Size", value: "15,000+", unit: "records", color: "purple" },
-    { icon: Calendar, label: "Time Period", value: "2018", unit: "to 2024", color: "cyan" },
-    { icon: MapPin, label: "Coverage", value: "17", unit: "regions", color: "orange" },
-    { icon: Database, label: "Variables", value: "25+", unit: "features", color: "pink" }
+    { icon: Users, label: "Sample Size", value: "15,000+", unit: "records", color: "red" },
+    { icon: Calendar, label: "Time Period", value: "2018", unit: "to 2024", color: "blue" },
+    { icon: MapPin, label: "Coverage", value: "17", unit: "regions", color: "yellow" },
+    { icon: Database, label: "Variables", value: "25+", unit: "features", color: "red" }
   ];
 
   const categoricalVars = [
@@ -27,7 +27,7 @@ export function Dataset() {
     <section className="py-32 bg-slate-950 relative overflow-hidden">
       {/* Animated background blobs */}
       <motion.div 
-        className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-3xl"
+        className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-3xl"
         animate={{ 
           x: [0, 50, 0],
           y: [0, 30, 0],
@@ -36,7 +36,7 @@ export function Dataset() {
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-500/10 to-pink-500/5 rounded-full blur-3xl"
+        className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-yellow-500/5 rounded-full blur-3xl"
         animate={{ 
           x: [0, -30, 0],
           y: [0, -20, 0],
@@ -47,7 +47,7 @@ export function Dataset() {
       
       {/* Floating decorative shapes */}
       <motion.div
-        className="absolute top-1/3 right-1/4 w-20 h-20 border-2 border-purple-500/30 rounded-full"
+        className="absolute top-1/3 right-1/4 w-20 h-20 border-2 border-yellow-500/30 rounded-full"
         animate={{ 
           y: [0, -20, 0],
           rotate: 360
@@ -67,11 +67,11 @@ export function Dataset() {
           className="max-w-3xl mb-20"
         >
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="font-mono text-purple-400 uppercase tracking-[0.3em] text-xs">Dataset Description</span>
+            <Sparkles className="w-4 h-4 text-red-400" />
+            <span className="font-mono text-red-400 uppercase tracking-[0.3em] text-xs">Dataset Description</span>
           </div>
           <h2 className="font-display text-6xl mb-6 text-white tracking-tight">
-            Data <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Foundation</span>
+            Data <span className="bg-gradient-to-r from-blue-400 to-yellow-400 bg-clip-text text-transparent">Foundation</span>
           </h2>
           <p className="text-xl text-slate-400 leading-relaxed">
             Comprehensive labor force survey data from the Philippine Statistics Authority (PSA), 
@@ -84,10 +84,9 @@ export function Dataset() {
           {datasetFeatures.map((feature, index) => {
             const Icon = feature.icon;
             const colorMap = {
-              purple: { border: 'border-purple-500/50', text: 'text-purple-400', bg: 'from-purple-500/10' },
-              cyan: { border: 'border-cyan-500/50', text: 'text-cyan-400', bg: 'from-cyan-500/10' },
-              orange: { border: 'border-orange-500/50', text: 'text-orange-400', bg: 'from-orange-500/10' },
-              pink: { border: 'border-pink-500/50', text: 'text-pink-400', bg: 'from-pink-500/10' }
+              red: { border: 'border-red-500/50', text: 'text-red-400', bg: 'from-red-500/10' },
+              blue: { border: 'border-blue-500/50', text: 'text-blue-400', bg: 'from-blue-500/10' },
+              yellow: { border: 'border-yellow-500/50', text: 'text-yellow-400', bg: 'from-yellow-500/10' }
             };
             const colors = colorMap[feature.color as keyof typeof colorMap];
             
@@ -132,20 +131,20 @@ export function Dataset() {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <Database className="w-8 h-8 text-purple-400" />
+              <Database className="w-8 h-8 text-blue-400" />
             </motion.div>
             <h3 className="font-display text-4xl text-white tracking-tight">Key Variables</h3>
           </div>
           
           <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
             <TabsList className="mb-10 bg-slate-900/50 backdrop-blur-xl border-2 border-slate-800">
-              <TabsTrigger value="all" className="font-mono text-xs data-[state=active]:bg-purple-500/10 data-[state=active]:text-purple-400 data-[state=active]:scale-105 transition-all">
+              <TabsTrigger value="all" className="font-mono text-xs data-[state=active]:bg-blue-500/10 data-[state=active]:text-blue-400 data-[state=active]:scale-105 transition-all">
                 ALL
               </TabsTrigger>
-              <TabsTrigger value="categorical" className="font-mono text-xs data-[state=active]:bg-purple-500/10 data-[state=active]:text-purple-400 data-[state=active]:scale-105 transition-all">
+              <TabsTrigger value="categorical" className="font-mono text-xs data-[state=active]:bg-red-500/10 data-[state=active]:text-red-400 data-[state=active]:scale-105 transition-all">
                 CATEGORICAL
               </TabsTrigger>
-              <TabsTrigger value="numerical" className="font-mono text-xs data-[state=active]:bg-purple-500/10 data-[state=active]:text-purple-400 data-[state=active]:scale-105 transition-all">
+              <TabsTrigger value="numerical" className="font-mono text-xs data-[state=active]:bg-yellow-500/10 data-[state=active]:text-yellow-400 data-[state=active]:scale-105 transition-all">
                 NUMERICAL
               </TabsTrigger>
             </TabsList>
@@ -181,7 +180,7 @@ export function Dataset() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                     whileHover={{ scale: 1.1, rotate: -2 }}
-                    className="backdrop-blur-md bg-purple-500/10 border-2 border-purple-500/30 rounded-lg px-4 py-3 text-purple-200 text-sm cursor-pointer"
+                    className="backdrop-blur-md bg-blue-500/10 border-2 border-blue-500/30 rounded-lg px-4 py-3 text-blue-200 text-sm cursor-pointer"
                   >
                     {variable}
                   </motion.div>
@@ -214,7 +213,7 @@ export function Dataset() {
             viewport={{ once: true }}
           >
             <p className="text-sm text-slate-500 font-mono">
-              <span className="text-white bg-purple-500/20 px-2 py-1 rounded">SOURCE:</span> Philippine Statistics Authority (PSA) Labor Force Survey
+              <span className="text-white bg-blue-500/20 px-2 py-1 rounded">SOURCE:</span> Philippine Statistics Authority (PSA) Labor Force Survey
             </p>
           </motion.div>
         </motion.div>

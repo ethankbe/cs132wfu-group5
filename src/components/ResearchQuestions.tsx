@@ -39,18 +39,31 @@ export function ResearchQuestions() {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-      {/* Floating shapes */}
+    <section className="py-32 relative overflow-hidden">
+      {/* Sophisticated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-amber-950/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-orange-950/15 via-transparent to-transparent" />
+      
+      {/* Elegant floating orbs */}
       <motion.div
-        className="absolute top-20 left-20 w-20 h-20 border-4 border-amber-300 rounded-lg"
-        animate={{ rotate: [0, 90, 0], y: [0, -20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-yellow-500/8 via-red-500/4 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: [0, 60, 0],
+          y: [0, -40, 0],
+          scale: [1, 1.15, 1]
+        }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
       
       <motion.div
-        className="absolute bottom-40 right-40 w-16 h-16 bg-gradient-to-br from-orange-300 to-pink-300 rounded-full"
-        animate={{ scale: [1, 1.2, 1], x: [0, 10, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/6 via-yellow-500/3 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: [0, -50, 0],
+          y: [0, 30, 0],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -60,11 +73,11 @@ export function ResearchQuestions() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="font-mono text-amber-600 uppercase tracking-[0.3em] text-xs">Research Questions</span>
-          <h2 className="font-display text-6xl mt-6 mb-6 text-slate-900 tracking-tight">
-            Core <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Inquiries</span>
+          <span className="font-mono text-yellow-400 uppercase tracking-[0.4em] text-xs mb-6 block">Research Questions</span>
+          <h2 className="font-display text-6xl mb-6 text-white tracking-tight">
+            Core <span className="bg-gradient-to-r from-yellow-400 via-red-400 to-blue-400 bg-clip-text text-transparent">Inquiries</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
             Five fundamental questions that guide our investigation. Click to explore each in detail.
           </p>
         </motion.div>
@@ -75,28 +88,32 @@ export function ResearchQuestions() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 className="group"
               >
                 <motion.div
-                  layout
-                  className={`border-2 rounded-2xl overflow-hidden transition-all cursor-pointer ${
+                  className={`relative border rounded-2xl overflow-hidden transition-all cursor-pointer ${
                     isExpanded 
-                      ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl' 
-                      : 'border-slate-200 bg-white hover:border-amber-300 hover:shadow-lg'
+                      ? 'border-yellow-500/40 bg-gradient-to-br from-yellow-500/5 via-blue-500/5 to-transparent shadow-2xl shadow-yellow-500/10' 
+                      : 'border-slate-800/80 bg-gradient-to-br from-slate-800/40 to-slate-900/40 hover:border-yellow-500/20 hover:shadow-lg backdrop-blur-xl'
                   }`}
                   onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  whileHover={{ scale: isExpanded ? 1 : 1.01 }}
+                  whileHover={{ scale: isExpanded ? 1 : 1.005 }}
                 >
-                  <div className="flex gap-6 p-8">
+                  {/* Subtle gradient overlay on hover */}
+                  {!isExpanded && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/0 to-transparent group-hover:via-yellow-500/5 transition-all duration-500" />
+                  )}
+                  
+                  <div className="flex gap-8 p-8 relative z-10">
                     <motion.div 
                       className={`font-mono text-6xl tracking-tighter transition-colors ${
-                        isExpanded ? 'text-amber-500' : 'text-slate-200 group-hover:text-amber-400'
+                        isExpanded ? 'text-yellow-400' : 'text-slate-800 group-hover:text-yellow-500/50'
                       }`}
-                      animate={{ scale: isExpanded ? 1.1 : 1 }}
+                      animate={{ scale: isExpanded ? 1.05 : 1 }}
                     >
                       {item.number}
                     </motion.div>
@@ -104,7 +121,7 @@ export function ResearchQuestions() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className={`font-display text-2xl mb-3 tracking-tight leading-tight transition-colors ${
-                          isExpanded ? 'text-amber-700' : 'text-slate-900 group-hover:text-amber-600'
+                          isExpanded ? 'text-white' : 'text-slate-200 group-hover:text-white'
                         }`}>
                           {item.question}
                         </h3>
@@ -113,11 +130,11 @@ export function ResearchQuestions() {
                           transition={{ duration: 0.3 }}
                         >
                           <ChevronDown className={`w-6 h-6 transition-colors ${
-                            isExpanded ? 'text-amber-600' : 'text-slate-400'
+                            isExpanded ? 'text-yellow-400' : 'text-slate-600 group-hover:text-slate-400'
                           }`} />
                         </motion.div>
                       </div>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-slate-400 leading-relaxed">
                         {item.description}
                       </p>
                       
@@ -129,8 +146,8 @@ export function ResearchQuestions() {
                             exit={{ opacity: 0, height: 0, marginTop: 0 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <div className="pt-4 border-t border-amber-200">
-                              <p className="text-slate-700 leading-relaxed text-lg">
+                            <div className="pt-6 border-t border-yellow-500/20">
+                              <p className="text-slate-300 leading-relaxed text-lg">
                                 {item.details}
                               </p>
                             </div>
@@ -149,22 +166,34 @@ export function ResearchQuestions() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 relative"
+          className="mt-24 relative"
         >
           <motion.div
-            whileHover={{ rotate: -1, scale: 1.01 }}
-            className="p-12 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 shadow-lg"
+            whileHover={{ scale: 1.005 }}
+            className="relative p-12 bg-gradient-to-br from-yellow-500/5 via-red-500/5 to-transparent rounded-2xl border border-yellow-500/20 shadow-xl backdrop-blur-xl overflow-hidden"
           >
-            <h3 className="font-display text-3xl mb-4 text-slate-900 tracking-tight">Methodological Approach</h3>
-            <p className="text-slate-700 leading-relaxed text-lg max-w-4xl">
-              Each research question is addressed through rigorous statistical analysis, including descriptive 
-              statistics, correlation analysis, and hypothesis testing. Our methodology ensures findings are 
-              scientifically valid, reproducible, and actionable for policy development.
-            </p>
+            {/* Subtle animated gradient */}
+            <motion.div
+              className="absolute inset-0 opacity-30"
+              animate={{
+                backgroundPosition: ['0% 0%', '100% 100%']
+              }}
+              transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
+              style={{
+                background: 'linear-gradient(45deg, transparent 0%, rgba(251, 191, 36, 0.1) 50%, transparent 100%)',
+                backgroundSize: '200% 200%'
+              }}
+            />
+            
+            <div className="relative z-10">
+              <h3 className="font-display text-3xl mb-4 text-white tracking-tight">Methodological Approach</h3>
+              <p className="text-slate-400 leading-relaxed text-lg max-w-4xl">
+                Each research question is addressed through rigorous statistical analysis, including descriptive 
+                statistics, correlation analysis, and hypothesis testing. Our methodology ensures findings are 
+                scientifically valid, reproducible, and actionable for policy development.
+              </p>
+            </div>
           </motion.div>
-          
-          {/* Decorative accent */}
-          <div className="absolute -bottom-3 -right-3 w-32 h-32 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full blur-3xl opacity-30" />
         </motion.div>
       </div>
     </section>

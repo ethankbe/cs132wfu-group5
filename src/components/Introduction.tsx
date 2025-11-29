@@ -4,48 +4,69 @@ import { TrendingUp, Users, BarChart3 } from "lucide-react";
 
 export function Introduction() {
   const highlights = [
-    { icon: TrendingUp, text: "Advanced statistical analysis", color: "orange" },
-    { icon: Users, text: "Demographic segmentation", color: "purple" },
-    { icon: BarChart3, text: "Regional comparisons", color: "cyan" }
+    { icon: TrendingUp, text: "Advanced statistical analysis", color: "yellow" },
+    { icon: Users, text: "Demographic segmentation", color: "red" },
+    { icon: BarChart3, text: "Regional comparisons", color: "blue" }
   ];
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
-      {/* Playful shapes */}
+    <section className="py-32 relative overflow-hidden">
+      {/* Sophisticated multi-layer gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-950/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-red-950/20 via-transparent to-transparent" />
+      
+      {/* Subtle floating orbs */}
       <motion.div
-        className="absolute top-40 right-10 w-32 h-32 border-4 border-orange-200 rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-yellow-500/10 via-red-500/5 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: [0, 50, 0],
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       
       <motion.div
-        className="absolute bottom-20 left-10 w-24 h-24 bg-purple-100 rotate-45"
-        animate={{ rotate: [45, 225, 45] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-br from-red-500/10 via-blue-500/5 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: [0, -30, 0],
+          y: [0, 40, 0],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-5 gap-16 items-start">
+        <div className="grid lg:grid-cols-5 gap-20 items-start">
           {/* Text content - 3 columns */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-3"
           >
-            <div className="mb-6">
-              <span className="font-mono text-orange-600 uppercase tracking-[0.3em] text-xs">Introduction</span>
-            </div>
+            <motion.div 
+              className="mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <span className="font-mono text-yellow-400 uppercase tracking-[0.4em] text-xs">Introduction</span>
+            </motion.div>
             
-            <h2 className="font-display text-6xl mb-8 text-slate-900 tracking-tight leading-tight">
+            <h2 className="font-display text-6xl mb-10 text-white tracking-tight leading-[1.1]">
               Understanding Labor Market{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                Dynamics
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-yellow-400 via-red-400 to-blue-400 bg-clip-text text-transparent">
+                  Dynamics
+                </span>
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
               </span>
             </h2>
             
-            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+            <div className="space-y-6 text-lg text-slate-400 leading-relaxed mb-12">
               <p>
                 Unemployment remains one of the most pressing socio-economic challenges in the Philippines, 
                 directly impacting the livelihoods of millions of citizens and their families. A thorough 
@@ -57,22 +78,19 @@ export function Introduction() {
                 dimensions—demographic characteristics, geographic regions, and temporal trends. Through hypothesis 
                 testing and advanced analytical techniques, we aim to uncover actionable insights.
               </p>
-              
-              <p>
-                Our analysis examines the key factors contributing to unemployment, identifies regional disparities, 
-                and evaluates how demographic variables influence employment outcomes in the Philippine labor market.
-              </p>
             </div>
 
-            {/* Creative highlight cards */}
-            <div className="flex flex-wrap gap-4 mt-12">
+            {/* Refined highlight cards */}
+            <div className="flex flex-wrap gap-3 mb-16">
               {highlights.map((item, index) => {
                 const Icon = item.icon;
                 const colorMap = {
-                  orange: "border-orange-200 bg-orange-50 text-orange-700",
-                  purple: "border-purple-200 bg-purple-50 text-purple-700",
-                  cyan: "border-cyan-200 bg-cyan-50 text-cyan-700"
+                  yellow: { border: "border-yellow-500/30", bg: "from-yellow-500/10 to-transparent", text: "text-yellow-400", glow: "group-hover:shadow-yellow-500/20" },
+                  red: { border: "border-red-500/30", bg: "from-red-500/10 to-transparent", text: "text-red-400", glow: "group-hover:shadow-red-500/20" },
+                  blue: { border: "border-blue-500/30", bg: "from-blue-500/10 to-transparent", text: "text-blue-400", glow: "group-hover:shadow-blue-500/20" }
                 };
+                const colors = colorMap[item.color as keyof typeof colorMap];
+                
                 return (
                   <motion.div
                     key={index}
@@ -80,34 +98,40 @@ export function Introduction() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-                    className={`flex items-center gap-2 px-4 py-3 border-2 rounded-full ${colorMap[item.color as keyof typeof colorMap]} cursor-pointer`}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className={`group flex items-center gap-2 px-4 py-2.5 border ${colors.border} rounded-full bg-gradient-to-br ${colors.bg} backdrop-blur-xl cursor-pointer transition-all shadow-lg ${colors.glow}`}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span className="text-sm">{item.text}</span>
+                    <Icon className={`w-4 h-4 ${colors.text}`} />
+                    <span className={`text-sm ${colors.text}`}>{item.text}</span>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Key metrics with hover effects */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-slate-200">
-              <motion.div whileHover={{ y: -5 }} className="cursor-pointer">
-                <div className="font-mono text-4xl text-orange-600 mb-2">25+</div>
-                <div className="text-xs text-slate-500 uppercase tracking-wider">Variables</div>
-              </motion.div>
-              <motion.div whileHover={{ y: -5 }} className="cursor-pointer">
-                <div className="font-mono text-4xl text-purple-600 mb-2">6 Years</div>
-                <div className="text-xs text-slate-500 uppercase tracking-wider">Time Span</div>
-              </motion.div>
-              <motion.div whileHover={{ y: -5 }} className="cursor-pointer">
-                <div className="font-mono text-4xl text-cyan-600 mb-2">5</div>
-                <div className="text-xs text-slate-500 uppercase tracking-wider">Hypotheses</div>
-              </motion.div>
+            {/* Cleaner metrics */}
+            <div className="grid grid-cols-3 gap-8 pt-12 border-t border-slate-800/50">
+              {[
+                { value: "25+", label: "Variables", color: "yellow" },
+                { value: "6 Years", label: "Time Span", color: "red" },
+                { value: "5", label: "Hypotheses", color: "blue" }
+              ].map((metric, index) => (
+                <motion.div 
+                  key={index}
+                  whileHover={{ y: -5 }} 
+                  className="cursor-pointer group"
+                >
+                  <div className={`font-mono text-5xl text-${metric.color}-400 mb-2 group-hover:text-${metric.color}-300 transition-colors`}>
+                    {metric.value}
+                  </div>
+                  <div className="text-xs text-slate-600 uppercase tracking-wider">
+                    {metric.label}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Image with tilt effect */}
+          {/* Refined image with better effects */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -116,17 +140,19 @@ export function Introduction() {
             className="lg:col-span-2"
           >
             <motion.div
-              whileHover={{ rotate: 2, scale: 1.02 }}
+              whileHover={{ scale: 1.02, rotate: 1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="relative"
+              className="relative group"
             >
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1664371354575-a776003a417d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW5pbGElMjBwaGlsaXBwaW5lcyUyMGNpdHlzY2FwZXxlbnwxfHx8fDE3NjI1ODM4NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Manila cityscape"
-                className="rounded-2xl w-full h-[600px] object-cover shadow-2xl"
-              />
-              {/* Decorative corner accent */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full blur-2xl opacity-50" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1664371354575-a776003a417d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW5pbGElMjBwaGlsaXBwaW5lcyUyMGNpdHlzY2FwZXxlbnwxfHx8fDE3NjI1ODM4NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  alt="Manila cityscape"
+                  className="rounded-2xl w-full h-[600px] object-cover shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent rounded-2xl" />
+              </div>
             </motion.div>
           </motion.div>
         </div>

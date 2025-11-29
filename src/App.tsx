@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { MotionConfig, m } from "motion/react";
 import { Hero } from "./components/Hero";
 import { Introduction } from "./components/Introduction";
 import { Dataset } from "./components/Dataset";
@@ -6,11 +6,13 @@ import { ResearchQuestions } from "./components/ResearchQuestions";
 import { Hypotheses } from "./components/Hypotheses";
 import { HypothesisTesting } from "./components/HypothesisTesting";
 import { AboutUs } from "./components/AboutUs";
+import { FontTester } from "./components/FontTester";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [headerFont, setHeaderFont] = useState("font-display-jakarta");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +27,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-header-font', headerFont);
+  }, [headerFont]);
+
   return (
-    <div className="min-h-screen">
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen">
       <Hero />
       <Introduction />
       <Dataset />
@@ -46,13 +53,13 @@ export default function App() {
                 </p>
               </div>
               <div className="flex gap-6">
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm uppercase tracking-wider">
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
                   Methodology
                 </a>
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm uppercase tracking-wider">
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
                   Data
                 </a>
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm uppercase tracking-wider">
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
                   Contact
                 </a>
               </div>
@@ -62,18 +69,15 @@ export default function App() {
       </footer>
 
       {showScrollTop && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8, rotate: -180 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+        <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-4 backdrop-blur-xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20 hover:from-purple-500/30 hover:to-cyan-500/30 border-2 border-purple-500/30 text-purple-400 rounded-full shadow-2xl transition-all z-50"
-          whileHover={{ scale: 1.15, rotate: 5 }}
-          whileTap={{ scale: 0.9, rotate: -5 }}
+          className="fixed bottom-8 right-8 p-4 backdrop-blur-xl bg-gradient-to-br from-red-500/20 to-blue-500/20 hover:from-red-500/30 hover:to-blue-500/30 border-2 border-red-500/30 text-red-400 rounded-full shadow-2xl transition-all z-50 hover:scale-110 active:scale-95"
+          style={{ animation: 'fade-in 0.3s ease-out' }}
         >
           <ArrowUp className="w-5 h-5" />
-        </motion.button>
+        </button>
       )}
     </div>
+    </MotionConfig>
   );
 }

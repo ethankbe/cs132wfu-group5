@@ -13,7 +13,8 @@ export function AboutUs() {
       specialization: "Statistical Analysis & Machine Learning",
       education: "MS Data Science, University of the Philippines",
       bio: "10+ years experience in statistical modeling and predictive analytics for public policy research.",
-      color: "purple"
+      color: "red",
+      image: "https://images.unsplash.com/photo-1758685848208-e108b6af94cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGRhdGElMjBzY2llbnRpc3R8ZW58MXx8fHwxNzY0MjkwNjQ4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     },
     {
       name: "Juan dela Cruz",
@@ -21,7 +22,8 @@ export function AboutUs() {
       specialization: "Economic Analysis & Data Visualization",
       education: "BS Statistics, Ateneo de Manila University",
       bio: "Expert in transforming complex datasets into compelling visual narratives for stakeholder communication.",
-      color: "cyan"
+      color: "blue",
+      image: "https://images.unsplash.com/photo-1758685734503-58a8accc24e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjByZXNlYXJjaGVyfGVufDF8fHx8MTc2NDI5MDY0OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     },
     {
       name: "Sofia Reyes",
@@ -29,15 +31,8 @@ export function AboutUs() {
       specialization: "Data Processing & Database Management",
       education: "BS Computer Science, De La Salle University",
       bio: "Specializes in building scalable data pipelines and ensuring data quality across research projects.",
-      color: "orange"
-    },
-    {
-      name: "Carlos Mendoza",
-      role: "Policy Researcher",
-      specialization: "Labor Economics & Policy Analysis",
-      education: "MA Economics, University of Santo Tomas",
-      bio: "Bridges data science with policy development, translating findings into actionable recommendations.",
-      color: "pink"
+      color: "yellow",
+      image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGVuZ2luZWVyfGVufDF8fHx8MTc2NDE3MDA2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
     }
   ];
 
@@ -48,7 +43,7 @@ export function AboutUs() {
       
       {/* Floating shapes */}
       <motion.div
-        className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl"
+        className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-red-500/20 to-yellow-500/20 rounded-3xl"
         animate={{ rotate: [0, 90, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -60,9 +55,9 @@ export function AboutUs() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="font-mono text-cyan-400 uppercase tracking-[0.3em] text-xs">About Us</span>
+          <span className="font-mono text-blue-400 uppercase tracking-[0.3em] text-xs">About Us</span>
           <h2 className="font-display text-6xl mt-6 mb-6 text-white tracking-tight">
-            Research <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">Team</span>
+            Research <span className="bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent">Team</span>
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
             A dedicated team of data scientists, economists, and researchers. Hover over each card to learn more.
@@ -82,17 +77,16 @@ export function AboutUs() {
             className="w-full h-[500px] object-cover rounded-2xl"
           />
           {/* Decorative corner */}
-          <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full blur-2xl opacity-50" />
+          <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-blue-400 to-red-400 rounded-full blur-2xl opacity-50" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
           {team.map((member, index) => {
             const isHovered = hoveredMember === index;
             const colorMap = {
-              purple: { border: 'border-purple-500/50', bg: 'bg-purple-500/10', text: 'text-purple-400' },
-              cyan: { border: 'border-cyan-500/50', bg: 'bg-cyan-500/10', text: 'text-cyan-400' },
-              orange: { border: 'border-orange-500/50', bg: 'bg-orange-500/10', text: 'text-orange-400' },
-              pink: { border: 'border-pink-500/50', bg: 'bg-pink-500/10', text: 'text-pink-400' }
+              red: { border: 'border-red-500/50', bg: 'bg-red-500/10', text: 'text-red-400' },
+              blue: { border: 'border-blue-500/50', bg: 'bg-blue-500/10', text: 'text-blue-400' },
+              yellow: { border: 'border-yellow-500/50', bg: 'bg-yellow-500/10', text: 'text-yellow-400' }
             };
             const colors = colorMap[member.color as keyof typeof colorMap];
             
@@ -108,7 +102,7 @@ export function AboutUs() {
                 className="group relative"
               >
                 <motion.div
-                  className={`backdrop-blur-xl bg-white/5 border border-slate-800 rounded-xl p-10 h-full transition-all cursor-pointer relative overflow-hidden ${
+                  className={`backdrop-blur-xl bg-white/5 border border-slate-800 rounded-xl overflow-hidden h-full transition-all cursor-pointer relative ${
                     isHovered ? colors.border : ''
                   }`}
                   animate={{
@@ -127,7 +121,17 @@ export function AboutUs() {
                     />
                   )}
                   
-                  <div className="relative z-10">
+                  {/* Profile Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <ImageWithFallback
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+                  </div>
+                  
+                  <div className="relative z-10 p-8">
                     <h3 className={`font-display text-3xl mb-2 text-white tracking-tight transition-colors ${
                       isHovered ? colors.text : ''
                     }`}>
@@ -189,9 +193,9 @@ export function AboutUs() {
           
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
-              { title: "Rigor", desc: "State-of-the-art statistical methodologies", color: "purple" },
-              { title: "Collaboration", desc: "Working with stakeholders and communities", color: "cyan" },
-              { title: "Impact", desc: "Creating real-world policy solutions", color: "amber" }
+              { title: "Rigor", desc: "State-of-the-art statistical methodologies", color: "red" },
+              { title: "Collaboration", desc: "Working with stakeholders and communities", color: "blue" },
+              { title: "Impact", desc: "Creating real-world policy solutions", color: "yellow" }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -210,21 +214,21 @@ export function AboutUs() {
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="backdrop-blur-xl bg-white/5 hover:bg-purple-500/10 border border-slate-800 hover:border-purple-500/50 p-4 rounded-xl transition-all"
+                className="backdrop-blur-xl bg-white/5 hover:bg-red-500/10 border border-slate-800 hover:border-red-500/50 p-4 rounded-xl transition-all"
               >
                 <Mail className="w-5 h-5" />
               </motion.button>
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="backdrop-blur-xl bg-white/5 hover:bg-cyan-500/10 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl transition-all"
+                className="backdrop-blur-xl bg-white/5 hover:bg-blue-500/10 border border-slate-800 hover:border-blue-500/50 p-4 rounded-xl transition-all"
               >
                 <Linkedin className="w-5 h-5" />
               </motion.button>
               <motion.button 
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="backdrop-blur-xl bg-white/5 hover:bg-amber-500/10 border border-slate-800 hover:border-amber-500/50 p-4 rounded-xl transition-all"
+                className="backdrop-blur-xl bg-white/5 hover:bg-yellow-500/10 border border-slate-800 hover:border-yellow-500/50 p-4 rounded-xl transition-all"
               >
                 <Github className="w-5 h-5" />
               </motion.button>

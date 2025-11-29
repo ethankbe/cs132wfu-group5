@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Archivo+Black&family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800;900&family=Raleway:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Exo+2:wght@400;500;600;700;800;900&family=Clash+Display:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -198,6 +198,196 @@ body {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* Dynamic font switching based on data attribute */
+[data-header-font="font-display"] .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+[data-header-font="font-display-poppins"] .font-display {
+  font-family: 'Poppins', sans-serif;
+}
+
+[data-header-font="font-display-outfit"] .font-display {
+  font-family: 'Outfit', sans-serif;
+}
+
+[data-header-font="font-display-manrope"] .font-display {
+  font-family: 'Manrope', sans-serif;
+}
+
+[data-header-font="font-display-sora"] .font-display {
+  font-family: 'Sora', sans-serif;
+}
+
+[data-header-font="font-display-archivo"] .font-display {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+[data-header-font="font-display-montserrat"] .font-display {
+  font-family: 'Montserrat', sans-serif;
+}
+
+[data-header-font="font-display-rubik"] .font-display {
+  font-family: 'Rubik', sans-serif;
+}
+
+[data-header-font="font-display-dm"] .font-display {
+  font-family: 'DM Sans', sans-serif;
+}
+
+[data-header-font="font-display-raleway"] .font-display {
+  font-family: 'Raleway', sans-serif;
+}
+
+[data-header-font="font-display-bebas"] .font-display {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+[data-header-font="font-display-exo"] .font-display {
+  font-family: 'Exo 2', sans-serif;
+}
+
+[data-header-font="font-display-clash"] .font-display {
+  font-family: 'Clash Display', sans-serif;
+}
+
+[data-header-font="font-display-urbanist"] .font-display {
+  font-family: 'Urbanist', sans-serif;
+}
+
+[data-header-font="font-display-jakarta"] .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-display-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-display-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-display-manrope {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-display-sora {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-display-archivo {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.font-display-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-display-rubik {
+  font-family: 'Rubik', sans-serif;
+}
+
+.font-display-dm {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-display-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.font-display-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-display-exo {
+  font-family: 'Exo 2', sans-serif;
+}
+
+.font-display-clash {
+  font-family: 'Clash Display', sans-serif;
+}
+
+.font-display-urbanist {
+  font-family: 'Urbanist', sans-serif;
+}
+
+.font-display-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom animations for Hero component */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-smooth {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, -20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-25px, 15px) scale(1.02);
+  }
+}
+
+@keyframes float-smooth-alt {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-30px, 20px) scale(1.03);
+  }
+  50% {
+    transform: translate(25px, -15px) scale(0.97);
+  }
+  75% {
+    transform: translate(15px, -25px) scale(1.05);
+  }
+}
+
+@keyframes float-smooth-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-20px, -15px) scale(1.04);
+  }
+  66% {
+    transform: translate(20px, 25px) scale(0.96);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+  opacity: 0;
 }
