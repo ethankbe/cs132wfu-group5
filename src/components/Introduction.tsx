@@ -1,16 +1,10 @@
 import { motion } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { TrendingUp, Users, BarChart3 } from "lucide-react";
+import { TrendingDown, Users, Heart, MapPin, GraduationCap, Building2 } from "lucide-react";
 
 export function Introduction() {
-  const highlights = [
-    { icon: TrendingUp, text: "Advanced statistical analysis", color: "yellow" },
-    { icon: Users, text: "Demographic segmentation", color: "red" },
-    { icon: BarChart3, text: "Regional comparisons", color: "blue" }
-  ];
-
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       {/* Sophisticated multi-layer gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-950/20 via-transparent to-transparent" />
@@ -38,122 +32,220 @@ export function Introduction() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-5 gap-20 items-start">
-          {/* Text content - 3 columns */}
+        {/* Section Header - Centered */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl bg-gradient-to-r from-yellow-500/10 to-red-500/10 border border-yellow-500/20 mb-8">
+            <span className="text-yellow-400 uppercase tracking-widest text-sm">Overview</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl mb-6 pb-2 bg-gradient-to-r from-yellow-400 via-red-400 to-blue-400 bg-clip-text text-transparent">
+            Understanding the Issue
+          </h2>
+        </div>
+
+        {/* Problem Subheading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
+          <h3 className="font-display text-3xl text-white">
+            Problem
+          </h3>
+        </motion.div>
+
+        {/* Problem Grid - Perfect Rectangle with Narrative Flow */}
+        <div className="grid grid-cols-12 gap-4 auto-rows-[360px] mb-16">
+          {/* Row 1: Three cards forming the narrative foundation */}
+          
+          {/* 1. Unemployment challenges - Yellow */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-3"
+            transition={{ delay: 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-yellow-500/5 to-yellow-600/10 border border-yellow-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer"
           >
-            <motion.div 
-              className="mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <span className="font-mono text-yellow-400 uppercase tracking-[0.4em] text-xs">Introduction</span>
-            </motion.div>
-            
-            <h2 className="font-display text-6xl mb-10 text-white tracking-tight leading-[1.1]">
-              Understanding Labor Market{" "}
-              <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-yellow-400 via-red-400 to-blue-400 bg-clip-text text-transparent">
-                  Dynamics
-                </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
-              </span>
-            </h2>
-            
-            <div className="space-y-6 text-lg text-slate-400 leading-relaxed mb-12">
-              <p>
-                Unemployment remains one of the most pressing socio-economic challenges in the Philippines, 
-                directly impacting the livelihoods of millions of citizens and their families. A thorough 
-                understanding of unemployment patterns is essential for developing effective policy interventions.
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center mb-4">
+                <TrendingDown className="w-6 h-6 text-yellow-400" />
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Underemployment and unemployment remain constant challenges in the Philippines, affecting economic growth, individual well-being, and overall social stability.
               </p>
-              
-              <p>
-                This research employs rigorous statistical methodologies to analyze unemployment across multiple 
-                dimensions—demographic characteristics, geographic regions, and temporal trends. Through hypothesis 
-                testing and advanced analytical techniques, we aim to uncover actionable insights.
-              </p>
-            </div>
-
-            {/* Refined highlight cards */}
-            <div className="flex flex-wrap gap-3 mb-16">
-              {highlights.map((item, index) => {
-                const Icon = item.icon;
-                const colorMap = {
-                  yellow: { border: "border-yellow-500/30", bg: "from-yellow-500/10 to-transparent", text: "text-yellow-400", glow: "group-hover:shadow-yellow-500/20" },
-                  red: { border: "border-red-500/30", bg: "from-red-500/10 to-transparent", text: "text-red-400", glow: "group-hover:shadow-red-500/20" },
-                  blue: { border: "border-blue-500/30", bg: "from-blue-500/10 to-transparent", text: "text-blue-400", glow: "group-hover:shadow-blue-500/20" }
-                };
-                const colors = colorMap[item.color as keyof typeof colorMap];
-                
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className={`group flex items-center gap-2 px-4 py-2.5 border ${colors.border} rounded-full bg-gradient-to-br ${colors.bg} backdrop-blur-xl cursor-pointer transition-all shadow-lg ${colors.glow}`}
-                  >
-                    <Icon className={`w-4 h-4 ${colors.text}`} />
-                    <span className={`text-sm ${colors.text}`}>{item.text}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Cleaner metrics */}
-            <div className="grid grid-cols-3 gap-8 pt-12 border-t border-slate-800/50">
-              {[
-                { value: "25+", label: "Variables", color: "yellow" },
-                { value: "6 Years", label: "Time Span", color: "red" },
-                { value: "5", label: "Hypotheses", color: "blue" }
-              ].map((metric, index) => (
-                <motion.div 
-                  key={index}
-                  whileHover={{ y: -5 }} 
-                  className="cursor-pointer group"
-                >
-                  <div className={`font-mono text-5xl text-${metric.color}-400 mb-2 group-hover:text-${metric.color}-300 transition-colors`}>
-                    {metric.value}
-                  </div>
-                  <div className="text-xs text-slate-600 uppercase tracking-wider">
-                    {metric.label}
-                  </div>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
-          {/* Refined image with better effects */}
+          {/* 2. OFWs - Blue glassmorphism */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-2"
+            transition={{ delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-blue-500/5 to-blue-600/10 border border-blue-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer shadow-xl shadow-blue-500/10"
           >
-            <motion.div
-              whileHover={{ scale: 1.02, rotate: 1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1664371354575-a776003a417d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW5pbGElMjBwaGlsaXBwaW5lcyUyMGNpdHlzY2FwZXxlbnwxfHx8fDE3NjI1ODM4NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Manila cityscape"
-                  className="rounded-2xl w-full h-[600px] object-cover shadow-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -top-16 -right-16 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-blue-400" />
               </div>
-            </motion.div>
+              <p className="text-slate-200 leading-relaxed">
+                With limited domestic opportunities, almost 10 million Filipinos work overseas, and over 40% of newly hired OFWs in 2023 secured low-skill jobs <a href="https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099115301242526825" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">(Rodriguez et al., 2024)</a>.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 3. Health impact - Red */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-red-500/5 to-red-600/10 border border-red-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-4">
+                <Heart className="w-6 h-6 text-red-400" />
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Beyond reducing total household income, job insecurity affects physical and mental health, creating ripple effects across communities <a href="https://doi.org/10.1001/jamanetworkopen.2024.3439" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors font-medium">(Wang et al., 2024)</a>.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Row 2: Three more cards */}
+          
+          {/* 4. Economic distribution - Red */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-red-500/5 to-red-600/10 border border-red-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-red-400" />
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Economic possibilities are distributed unevenly in the Philippines. While rural communities frequently have fewer job opportunities and lower incomes, urban areas may have better employment rates and higher compensation <a href="https://www.pna.gov.ph/opinion/pieces/1002-poverty-employment-in-ph-unpacking-the-contradiction" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors font-medium">(Lu, 2025)</a>.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 5. Education and employment - Yellow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-yellow-500/5 to-yellow-600/10 border border-yellow-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-blue-500/5 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-1/3 w-28 h-28 bg-yellow-500/10 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center mb-4">
+                <GraduationCap className="w-6 h-6 text-yellow-400" />
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Educational attainment remains closely tied to job prospects, with higher levels of education improving employment opportunities <a href="https://doi.org/10.3389/fpsyg.2022.914104" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 transition-colors font-medium">(Mian et al., 2022)</a>.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 6. Regional variation - Blue */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 md:col-span-4 row-span-1 backdrop-blur-xl bg-gradient-to-br from-blue-500/5 to-blue-600/10 border border-blue-500/20 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mb-4">
+                <Building2 className="w-6 h-6 text-blue-400" />
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Educational attainment and industry specializations vary widely across each region, which continue to shape employment outcomes in the Philippines.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Solution Subheading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
+          <h3 className="font-display text-3xl text-white">
+            Solution
+          </h3>
+        </motion.div>
+
+        {/* Solution Grid - Enhanced with Visual Appeal */}
+        <div className="grid grid-cols-12 gap-4 auto-rows-[240px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="col-span-12 row-span-1 backdrop-blur-xl bg-gradient-to-br from-blue-500/10 via-yellow-500/10 to-red-500/10 border-2 border-slate-700/50 hover:border-blue-500/40 rounded-3xl p-12 flex flex-col justify-center items-center relative overflow-hidden group cursor-pointer shadow-2xl"
+          >
+            {/* Animated background layers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-yellow-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <motion.div 
+              className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl"
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+            
+            {/* Content */}
+            <div className="relative z-10 text-center max-w-4xl">
+              <motion.div 
+                className="mb-6 flex justify-center gap-2"
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <div className="w-3 h-3 rounded-full bg-red-400 animate-pulse" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
+                <div className="w-3 h-3 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: '0.4s' }} />
+              </motion.div>
+              
+              <p className="text-slate-200 text-xl leading-relaxed">
+                This project will investigate how levels of <span className="text-yellow-400 font-semibold">educational attainment</span> relate to <span className="text-blue-400 font-semibold">unemployment rates</span> in the Philippines and whether <span className="text-red-400 font-semibold">regional industry specialization</span> plays a role, aiming to generate insights that can inform policies on education and employment.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>

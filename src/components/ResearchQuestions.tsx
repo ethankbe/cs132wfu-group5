@@ -1,45 +1,48 @@
-import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { motion } from "motion/react";
+import { X, Check } from "lucide-react";
 
 export function ResearchQuestions() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const questions = [
+  const questionsAndHypotheses = [
     {
-      number: "01",
-      question: "How does educational attainment affect unemployment rates in the Philippines?",
-      description: "Examining the relationship between education levels and unemployment likelihood across demographic groups.",
-      details: "We analyze data across five education levels (Elementary, High School, Vocational, College, Graduate) to understand how educational investment correlates with employment outcomes. Our Chi-Square analysis reveals strong statistical evidence (p < 0.001) of this relationship.",
+      number: "1",
+      question: (
+        <>
+          What is the relationship between the{" "}
+          <span className="text-yellow-400 bg-yellow-500/10 px-2 py-0.5 rounded">
+            highest level of educational attainment
+          </span>{" "}
+          (no education, primary, secondary, tertiary) and{" "}
+          <span className="text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">
+            unemployment rates
+          </span>
+          , and how does the degree of education influence the likelihood of being unemployed?
+        </>
+      ),
+      null: "Educational attainment has no correlation with unemployment rates.",
+      alternative: "Educational attainment strongly correlates with unemployment rates.",
     },
     {
-      number: "02",
-      question: "Are there significant regional disparities in unemployment rates?",
-      description: "Analyzing unemployment patterns across 17 regions to identify geographic and economic factors.",
-      details: "Using ANOVA methodology, we compare unemployment rates across all Philippine regions. NCR shows the lowest rate at 4.5%, while certain rural regions exceed 7%. This geographic variation highlights the need for region-specific interventions.",
-    },
-    {
-      number: "03",
-      question: "Does gender significantly influence employment opportunities?",
-      description: "Investigating statistical differences in unemployment rates between male and female job seekers.",
-      details: "Our two-sample t-test reveals females experience 5.6% unemployment compared to 4.8% for males. This 0.8 percentage point gap is statistically significant (p = 0.004), suggesting systemic barriers in the labor market.",
-    },
-    {
-      number: "04",
-      question: "What is the impact of age on unemployment vulnerability?",
-      description: "Studying unemployment experiences across age groups, with focus on youth and older workers.",
-      details: "Youth (15-24) face the highest unemployment at 12.4%—more than double the national average. This concentration highlights the critical need for youth employment programs and skills training initiatives.",
-    },
-    {
-      number: "05",
-      question: "How do urban and rural areas differ in employment opportunities?",
-      description: "Comparing unemployment rates and job search patterns between urban and rural locations.",
-      details: "Urban areas benefit from concentrated economic activity and infrastructure, resulting in lower unemployment. Rural areas face challenges including limited job diversity, seasonal employment, and geographic isolation from economic centers.",
+      number: "2",
+      question: (
+        <>
+          Do different regions have significantly different{" "}
+          <span className="text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">
+            unemployment rates
+          </span>{" "}
+          due to the{" "}
+          <span className="text-red-400 bg-red-500/10 px-2 py-0.5 rounded">
+            prevalence of different industries
+          </span>{" "}
+          per region?
+        </>
+      ),
+      null: "Different regions having different prevailing industries does not significantly affect differences in unemployment rates per region.",
+      alternative: "Different regions having different prevailing industries significantly affect differences in unemployment rates per region.",
     }
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       {/* Sophisticated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-amber-950/20 via-transparent to-transparent" />
@@ -67,134 +70,82 @@ export function ResearchQuestions() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <span className="font-mono text-yellow-400 uppercase tracking-[0.4em] text-xs mb-6 block">Research Questions</span>
-          <h2 className="font-display text-6xl mb-6 text-white tracking-tight">
-            Core <span className="bg-gradient-to-r from-yellow-400 via-red-400 to-blue-400 bg-clip-text text-transparent">Inquiries</span>
+        {/* Section Header - Centered */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl bg-gradient-to-r from-red-500/10 to-blue-500/10 border border-red-500/20 mb-8">
+            <span className="text-red-400 uppercase tracking-widest text-sm">Research Questions</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl mb-6 pb-2 bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent">
+            What We Aim to Answer
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
-            Five fundamental questions that guide our investigation. Click to explore each in detail.
-          </p>
-        </motion.div>
-
-        <div className="space-y-4">
-          {questions.map((item, index) => {
-            const isExpanded = expandedIndex === index;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="group"
-              >
-                <motion.div
-                  className={`relative border rounded-2xl overflow-hidden transition-all cursor-pointer ${
-                    isExpanded 
-                      ? 'border-yellow-500/40 bg-gradient-to-br from-yellow-500/5 via-blue-500/5 to-transparent shadow-2xl shadow-yellow-500/10' 
-                      : 'border-slate-800/80 bg-gradient-to-br from-slate-800/40 to-slate-900/40 hover:border-yellow-500/20 hover:shadow-lg backdrop-blur-xl'
-                  }`}
-                  onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  whileHover={{ scale: isExpanded ? 1 : 1.005 }}
-                >
-                  {/* Subtle gradient overlay on hover */}
-                  {!isExpanded && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/0 to-transparent group-hover:via-yellow-500/5 transition-all duration-500" />
-                  )}
-                  
-                  <div className="flex gap-8 p-8 relative z-10">
-                    <motion.div 
-                      className={`font-mono text-6xl tracking-tighter transition-colors ${
-                        isExpanded ? 'text-yellow-400' : 'text-slate-800 group-hover:text-yellow-500/50'
-                      }`}
-                      animate={{ scale: isExpanded ? 1.05 : 1 }}
-                    >
-                      {item.number}
-                    </motion.div>
-                    
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className={`font-display text-2xl mb-3 tracking-tight leading-tight transition-colors ${
-                          isExpanded ? 'text-white' : 'text-slate-200 group-hover:text-white'
-                        }`}>
-                          {item.question}
-                        </h3>
-                        <motion.div
-                          animate={{ rotate: isExpanded ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <ChevronDown className={`w-6 h-6 transition-colors ${
-                            isExpanded ? 'text-yellow-400' : 'text-slate-600 group-hover:text-slate-400'
-                          }`} />
-                        </motion.div>
-                      </div>
-                      <p className="text-slate-400 leading-relaxed">
-                        {item.description}
-                      </p>
-                      
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <div className="pt-6 border-t border-yellow-500/20">
-                              <p className="text-slate-300 leading-relaxed text-lg">
-                                {item.details}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-24 relative"
-        >
-          <motion.div
-            whileHover={{ scale: 1.005 }}
-            className="relative p-12 bg-gradient-to-br from-yellow-500/5 via-red-500/5 to-transparent rounded-2xl border border-yellow-500/20 shadow-xl backdrop-blur-xl overflow-hidden"
-          >
-            {/* Subtle animated gradient */}
+        <div className="space-y-12">
+          {questionsAndHypotheses.map((item, index) => (
             <motion.div
-              className="absolute inset-0 opacity-30"
-              animate={{
-                backgroundPosition: ['0% 0%', '100% 100%']
-              }}
-              transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-              style={{
-                background: 'linear-gradient(45deg, transparent 0%, rgba(251, 191, 36, 0.1) 50%, transparent 100%)',
-                backgroundSize: '200% 200%'
-              }}
-            />
-            
-            <div className="relative z-10">
-              <h3 className="font-display text-3xl mb-4 text-white tracking-tight">Methodological Approach</h3>
-              <p className="text-slate-400 leading-relaxed text-lg max-w-4xl">
-                Each research question is addressed through rigorous statistical analysis, including descriptive 
-                statistics, correlation analysis, and hypothesis testing. Our methodology ensures findings are 
-                scientifically valid, reproducible, and actionable for policy development.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="space-y-6"
+            >
+              {/* Question Card */}
+              <motion.div
+                className="relative border border-slate-700/50 bg-gradient-to-br from-yellow-500/10 via-blue-500/10 to-red-500/10 rounded-2xl overflow-hidden backdrop-blur-xl group"
+                whileHover={{ scale: 1.005 }}
+              >
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/0 to-transparent group-hover:via-yellow-500/5 transition-all duration-500" />
+                
+                <div className="flex gap-8 p-8 relative z-10">
+                  <motion.div 
+                    className="font-mono text-6xl tracking-tighter text-slate-700 group-hover:text-yellow-500/50 transition-colors"
+                  >
+                    {item.number}
+                  </motion.div>
+                  
+                  <div className="flex-1">
+                    <h3 className="font-display text-2xl text-white group-hover:text-yellow-100 tracking-tight leading-tight transition-colors">
+                      {item.question}
+                    </h3>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Hypotheses Section - Cleaner Design */}
+              <div className="pl-0 md:pl-20">
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* Null Hypothesis */}
+                  <div className="backdrop-blur-xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 rounded-xl p-6 transition-all">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 rounded-full bg-slate-800/50 flex items-center justify-center">
+                        <span className="font-mono text-xs text-slate-400">H₀</span>
+                      </div>
+                      <span className="font-mono text-xs text-slate-500 uppercase tracking-wider">Null Hypothesis</span>
+                    </div>
+                    <p className="text-slate-300 leading-relaxed text-sm">
+                      {item.null}
+                    </p>
+                  </div>
+                  
+                  {/* Alternative Hypothesis */}
+                  <div className="backdrop-blur-xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 rounded-xl p-6 transition-all">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 rounded-full bg-slate-800/50 flex items-center justify-center">
+                        <span className="font-mono text-xs text-slate-400">H₁</span>
+                      </div>
+                      <span className="font-mono text-xs text-slate-500 uppercase tracking-wider">Alternative Hypothesis</span>
+                    </div>
+                    <p className="text-slate-300 leading-relaxed text-sm">
+                      {item.alternative}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

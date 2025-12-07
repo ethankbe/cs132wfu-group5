@@ -3,10 +3,13 @@ import { Hero } from "./components/Hero";
 import { Introduction } from "./components/Introduction";
 import { Dataset } from "./components/Dataset";
 import { ResearchQuestions } from "./components/ResearchQuestions";
-import { Hypotheses } from "./components/Hypotheses";
-import { HypothesisTesting } from "./components/HypothesisTesting";
 import { AboutUs } from "./components/AboutUs";
 import { FontTester } from "./components/FontTester";
+import { Navigation } from "./components/Navigation";
+import { EDA } from "./components/EDA";
+import { Discussion } from "./components/Discussion";
+import { Conclusion } from "./components/Conclusion";
+import { Methodology } from "./components/Methodology";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -34,39 +37,32 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen">
+      <Navigation />
       <Hero />
-      <Introduction />
-      <Dataset />
-      <ResearchQuestions />
-      <Hypotheses />
-      <HypothesisTesting />
-      <AboutUs />
-      
-      <footer className="bg-slate-950 text-white py-16 relative overflow-hidden border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="backdrop-blur-xl bg-white/5 border border-slate-700/50 rounded-2xl p-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-              <div>
-                <div className="text-2xl mb-2">Unemployment in the Philippines</div>
-                <p className="text-slate-400 text-sm">
-                  Research Project 2024 • Educational & Research Purposes
-                </p>
-              </div>
-              <div className="flex gap-6">
-                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
-                  Methodology
-                </a>
-                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
-                  Data
-                </a>
-                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors text-sm uppercase tracking-wider">
-                  Contact
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div id="overview">
+        <Introduction />
+      </div>
+      <div id="research-questions">
+        <ResearchQuestions />
+      </div>
+      <div id="data">
+        <Dataset />
+      </div>
+      <div id="methodology">
+        <Methodology />
+      </div>
+      <div id="eda">
+        <EDA />
+      </div>
+      <div id="discussion">
+        <Discussion />
+      </div>
+      <div id="conclusion">
+        <Conclusion />
+      </div>
+      <div id="about-us">
+        <AboutUs />
+      </div>
 
       {showScrollTop && (
         <button

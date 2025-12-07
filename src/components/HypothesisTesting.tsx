@@ -84,18 +84,19 @@ export function HypothesisTesting() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <span className="font-mono text-yellow-400 uppercase tracking-[0.4em] text-xs mb-6 block">Hypothesis Testing</span>
-          <h2 className="font-display text-6xl mb-6 text-white tracking-tight">Analysis & Results</h2>
-          <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
+        {/* Section Header - Centered */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl bg-gradient-to-r from-yellow-500/10 to-blue-500/10 border border-yellow-500/20 mb-8">
+            <CheckCircle className="w-5 h-5 text-yellow-400" />
+            <span className="text-yellow-400 uppercase tracking-widest text-sm">Hypothesis Testing</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl mb-6 pb-2 bg-gradient-to-r from-yellow-400 via-blue-400 to-red-400 bg-clip-text text-transparent">
+            Analysis & Results
+          </h2>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Rigorous statistical testing with <span className="font-mono text-yellow-400 bg-yellow-500/10 px-2 py-0.5 rounded">α = 0.05</span> significance level to validate research hypotheses.
           </p>
-        </motion.div>
+        </div>
 
         {/* Charts Grid - Refined */}
         <div className="grid md:grid-cols-2 gap-6 mb-24">

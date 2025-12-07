@@ -1,20 +1,17 @@
 import { motion } from "motion/react";
-import { X, Check, Zap } from "lucide-react";
-import { useState } from "react";
+import { X, Check } from "lucide-react";
 
 export function Hypotheses() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   const hypotheses = [
     {
-      id: "H₁",
-      null: "There is no significant relationship between education level and unemployment rate.",
-      alternative: "Higher education levels are associated with lower unemployment rates.",
+      id: "Research Question 1",
+      null: "Educational attainment has no correlation with unemployment rates.",
+      alternative: "Educational attainment strongly correlates with unemployment rates.",
     },
     {
-      id: "H₂",
-      null: "There is no significant difference in unemployment rates across different regions.",
-      alternative: "Unemployment rates differ significantly across regions of the Philippines.",
+      id: "Research Question 2",
+      null: "Different regions having different prevailing industries does not significantly affect differences in unemployment rates per region.",
+      alternative: "Different regions having different prevailing industries significantly affect differences in unemployment rates per region.",
     }
   ];
 
@@ -42,24 +39,15 @@ export function Hypotheses() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <Zap className="w-4 h-4 text-red-400" />
-            <span className="font-mono text-red-400 uppercase tracking-[0.3em] text-xs">Hypotheses</span>
+        {/* Section Header - Centered */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl bg-gradient-to-r from-red-500/10 to-yellow-500/10 border border-red-500/20 mb-8">
+            <span className="text-red-400 uppercase tracking-widest text-sm">Hypotheses</span>
           </div>
-          <h2 className="font-display text-6xl mb-6 text-white tracking-tight">
-            Statistical <span className="bg-gradient-to-r from-red-400 to-yellow-400 bg-clip-text text-transparent">Hypotheses</span>
+          <h2 className="font-display text-5xl md:text-6xl mb-6 pb-2 bg-gradient-to-r from-red-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent">
+            Statistical Hypotheses
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
-            Testable hypotheses formulated to systematically investigate factors affecting unemployment. 
-            Hover to highlight the alternative hypothesis.
-          </p>
-        </motion.div>
+        </div>
 
         <div className="space-y-12">
           {hypotheses.map((hypothesis, index) => (
@@ -69,113 +57,41 @@ export function Hypotheses() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group"
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
             >
-              <div className="mb-6 flex items-center gap-3">
-                <motion.span 
-                  className="font-display text-5xl group-hover:text-purple-300 transition-colors"
-                  animate={{ 
-                    color: hoveredIndex === index ? '#D8B4FE' : '#A78BFA',
-                    scale: hoveredIndex === index ? 1.1 : 1
-                  }}
-                >
+              <div className="mb-6">
+                <span className="font-display text-3xl text-blue-400">
                   {hypothesis.id}
-                </motion.span>
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: hoveredIndex === index ? 60 : 0 }}
-                  className="h-0.5 bg-gradient-to-r from-red-400 to-transparent"
-                />
+                </span>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <motion.div 
-                  className="backdrop-blur-xl bg-slate-900/50 border border-slate-800 rounded-xl p-8 space-y-4 transition-all relative overflow-hidden"
-                  animate={{
-                    opacity: hoveredIndex === index ? 0.5 : 1,
-                    scale: hoveredIndex === index ? 0.98 : 1,
-                  }}
-                >
+                <div className="backdrop-blur-xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 rounded-xl p-8 space-y-4 transition-all hover:bg-slate-900/70">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
                       <X className="w-4 h-4 text-slate-500" />
                     </div>
-                    <span className="font-mono text-xs text-slate-500 uppercase tracking-wider">Null Hypothesis (H₀)</span>
+                    <span className="font-mono text-xs text-slate-500 uppercase tracking-wider">Null</span>
                   </div>
                   <p className="text-slate-400 leading-relaxed">
                     {hypothesis.null}
                   </p>
-                </motion.div>
+                </div>
                 
-                <motion.div 
-                  className="backdrop-blur-xl bg-red-500/5 border border-red-500/30 rounded-xl p-8 space-y-4 transition-all relative overflow-hidden cursor-pointer"
-                  animate={{
-                    scale: hoveredIndex === index ? 1.05 : 1,
-                    backgroundColor: hoveredIndex === index ? 'rgba(220, 38, 38, 0.15)' : 'rgba(220, 38, 38, 0.05)',
-                  }}
-                  whileHover={{ rotate: 1 }}
-                >
-                  {hoveredIndex === index && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-                      initial={{ x: '-100%' }}
-                      animate={{ x: '100%' }}
-                      transition={{ duration: 0.6 }}
-                    />
-                  )}
-                  <div className="flex items-center gap-3 relative z-10">
-                    <motion.div 
-                      className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center"
-                      animate={{ 
-                        scale: hoveredIndex === index ? [1, 1.2, 1] : 1,
-                        backgroundColor: hoveredIndex === index ? 'rgba(220, 38, 38, 0.3)' : 'rgba(220, 38, 38, 0.2)'
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
+                <div className="backdrop-blur-xl bg-red-500/5 border border-red-500/30 hover:border-red-500/40 rounded-xl p-8 space-y-4 transition-all hover:bg-red-500/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
                       <Check className="w-4 h-4 text-red-400" />
-                    </motion.div>
-                    <span className="font-mono text-xs text-red-400 uppercase tracking-wider">Alternative Hypothesis (H₁)</span>
+                    </div>
+                    <span className="font-mono text-xs text-red-400 uppercase tracking-wider">Alternative</span>
                   </div>
-                  <p className="text-white leading-relaxed relative z-10">
+                  <p className="text-white leading-relaxed">
                     {hypothesis.alternative}
                   </p>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.01, rotate: -0.5 }}
-          className="mt-24 backdrop-blur-xl bg-slate-900/50 border-2 border-red-500/30 text-white rounded-2xl p-12 relative overflow-hidden"
-        >
-          {/* Animated gradient overlay */}
-          <motion.div
-            className="absolute inset-0 opacity-10"
-            animate={{
-              background: [
-                'linear-gradient(45deg, #DC2626 0%, #EAB308 100%)',
-                'linear-gradient(90deg, #EAB308 0%, #DC2626 100%)',
-                'linear-gradient(135deg, #DC2626 0%, #EAB308 100%)',
-              ]
-            }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          />
-          
-          <div className="relative z-10">
-            <h3 className="font-display text-3xl mb-4 tracking-tight">Testing Protocol</h3>
-            <p className="text-slate-300 leading-relaxed text-lg">
-              All hypotheses are tested using a significance level of <span className="font-mono text-red-400 bg-red-500/20 px-2 py-0.5 rounded">α = 0.05</span>. We employ appropriate 
-              statistical tests including Chi-Square tests, ANOVA, and t-tests to ensure robust and 
-              reliable conclusions.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

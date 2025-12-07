@@ -268,8 +268,8 @@ export function Hero() {
             <div className="text-6xl md:text-7xl lg:text-8xl mb-6 bg-gradient-to-r from-yellow-400 via-amber-300 to-red-500 bg-clip-text text-transparent pb-4" style={{ fontWeight: 700 }}>
               Diploma o Diskarte?
             </div>
-            <div className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-400 to-slate-300 bg-clip-text text-transparent px-4">
-              Mapping the Influences of Educational Attainment and Industry Specialization on Unemployment Rates
+            <div className="font-mono text-lg md:text-xl lg:text-2xl bg-gradient-to-r from-blue-400 to-slate-300 bg-clip-text text-transparent px-4" style={{ fontWeight: 400, letterSpacing: '-0.01em', maxWidth: '90%', margin: '0 auto' }}>
+              Mapping the Influences of Educational Attainment and Regional Industry Specialization on Unemployment Rates
             </div>
           </div>
           
@@ -278,8 +278,8 @@ export function Hero() {
             <div className="text-6xl md:text-7xl lg:text-8xl mb-6 bg-gradient-to-r from-yellow-400 via-amber-300 to-red-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.3)] hover:scale-105 transition-transform duration-500 pb-4" style={{ fontWeight: 700 }}>
               Diploma o Diskarte?
             </div>
-            <div className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-300 to-slate-200 bg-clip-text text-transparent leading-relaxed px-4 max-w-[42rem] md:max-w-4xl lg:max-w-5xl mx-auto">
-              Mapping the Influences of Educational Attainment and Industry Specialization on Unemployment Rates
+            <div className="font-mono text-lg md:text-xl lg:text-2xl bg-gradient-to-r from-blue-300 to-slate-200 bg-clip-text text-transparent leading-relaxed px-4 mx-auto" style={{ fontWeight: 400, letterSpacing: '-0.01em', maxWidth: '90%' }}>
+              Mapping the Influences of Educational Attainment and Regional Industry Specialization on Unemployment Rates
             </div>
           </h1>
         </div>
