@@ -7,19 +7,19 @@ export function AboutUs() {
       name: "Ethan Kurt Espejo",
       bio: "A third-year UP Diliman BS Computer Science student with an interest in graphic and web design.",
       color: "red",
-      image: "https://images.unsplash.com/photo-1758685848208-e108b6af94cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGRhdGElMjBzY2llbnRpc3R8ZW58MXx8fHwxNzY0MjkwNjQ4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      image: "/src/images/espejo.jpeg"
     },
     {
       name: "Raphael Felix",
       bio: "A UP Diliman BS Computer Science student with interests in artificial intelligence and software development. Currently a member of UP Association of Computer Science Majors (UP CURSOR).",
       color: "blue",
-      image: "https://images.unsplash.com/photo-1758685734503-58a8accc24e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjByZXNlYXJjaGVyfGVufDF8fHx8MTc2NDI5MDY0OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      image: "/src/images/felix.jpg"
     },
     {
       name: "Miguel Guiang",
       bio: "A UP Diliman BS Computer Science student with interests in backend web development. Currently a member of UP Center of Student Innovations and a Junior Engineering Aide of UP Diliman CRS. ",
       color: "yellow",
-      image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGVuZ2luZWVyfGVufDF8fHx8MTc2NDE3MDA2Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      image: "/src/images/guiang.jpg"
     }
   ];
 
